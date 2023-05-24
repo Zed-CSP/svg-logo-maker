@@ -73,3 +73,13 @@ function writeToFile(fileName, data) {
         err ? console.log(err) : console.log('Success!')
     );
 }
+
+// function to initialize program
+function init() {
+    inquirer.prompt(questions).then((answers) => {
+        // variable construction
+
+        // create svg
+        writeToFile('logo.svg', svg);
+    });
+}
