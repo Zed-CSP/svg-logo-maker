@@ -66,3 +66,10 @@ const questions = [
         }
     },
 ];
+
+// function to write svg file
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.log(err) : console.log('Success!')
+    );
+}
