@@ -81,6 +81,13 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((answers) => {
         // variable construction
+        const logoName = answers.logoname;
+        const textColor = answers['text-color'];
+        const backgroundColor = answers['background-color'];
+        const font = answers.font;
+        const shape = answers.shape;
+        const shapeColor = answers['shape-color'];
+        
 
         // create svg
         writeToFile('logo.svg', svg);
