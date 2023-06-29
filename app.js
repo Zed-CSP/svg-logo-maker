@@ -1,33 +1,29 @@
-// Headers:
 const inquirer = require('inquirer');
 const fs = require('fs');
-const constructors = require('./assets/constructors.js');
-const questions = require('./lib/constants.js');
+const { Square, Circle, Triangle } = require('./lib/shapes');  
+const questions = require('./lib/constants'); 
 
+async () => {
+    const answers = await inquirer.prompt(questions);
+    const { shape, text, textColor, shapeColor } = answers;
 
+    let logo;
+    switch(shape) {
+        case 'Square':
+            logo = new Square(text, textColor, shapeColor);
+            break;
+        case 'Circle':
+            logo = new Circle(text, textColor, shapeColor);
+            break;
+        case 'Triangle':
+            logo = new Triangle(text, textColor, shapeColor);
+            break;
+    }
 
+    const svgContent = logo.generateSVG();
 
-
-// function to write svg file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-        err ? console.log(err) : console.log('Success!')
-    );
-}
-
-// function to initialize program
-function init() {
-    inquirer.prompt(questions).then((answers) => {
-        // variable construction
-        const logoName = answers.logoname;
-        const textColor = answers['text-color'];
-        const backgroundColor = answers['background-color'];
-        const font = answers.font;
-        const shape = answers.shape;
-        const shapeColor = answers['shape-color'];
-
-
-        // create svg
-        writeToFile('logo.svg', svg);
+    fs.writeFile('logo.svg', svgContent, (err) => {
+        if (err) throw err;
+        console.log('SVG logo has been saved!');
     });
-}
+};
