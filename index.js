@@ -3,7 +3,8 @@ const fs = require('fs');
 const { Square, Circle, Triangle } = require('./lib/shapes');  
 const questions = require('./lib/constants'); 
 
-async () => {
+
+(async function() {
     const answers = await inquirer.prompt(questions);
     const { shape, text, textColor, shapeColor } = answers;
 
@@ -22,8 +23,8 @@ async () => {
 
     const svgContent = logo.generateSVG();
 
-    fs.writeFile('logo.svg', svgContent, (err) => {
+    fs.writeFile("./assets/${fileName}.svg", svgContent, (err) => {
         if (err) throw err;
         console.log('SVG logo has been saved!');
     });
-};
+})();
