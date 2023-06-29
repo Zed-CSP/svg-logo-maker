@@ -23,7 +23,7 @@ const questions = require('./lib/constants');
 
     const svgContent = logo.generateSVG();
 
-    fs.writeFile("./assets/${fileName}.svg", svgContent, (err) => {
+    fs.writeFile("./assets/.svg", svgContent, (err) => {
         if (err) throw err;
         console.log('SVG logo has been saved!');
     });
