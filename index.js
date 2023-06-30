@@ -6,7 +6,7 @@ const questions = require('./lib/constants');
 
 (async function() {
     const answers = await inquirer.prompt(questions);
-    const { shape, text, textColor, shapeColor } = answers;
+    const { shape, text, textColor, shapeColor, fileName } = answers;
 
     let logo;
     switch(shape) {
@@ -23,7 +23,7 @@ const questions = require('./lib/constants');
 
     const svgContent = logo.generateSVG();
 
-    fs.writeFile("./assets/images/logo.svg", svgContent, (err) => {
+    fs.writeFile(`./assets/images/${answers.fileName}`, svgContent, (err) => {
         if (err) throw err;
         console.log('SVG logo has been saved!');
     });
