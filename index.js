@@ -9,7 +9,7 @@ async () => { // this is an async function, inquirer.prompt() returns a promise,
     const { shape, text, textColor, shapeColor, fileName } = answers;
 
     let logo; 
-    switch(shape) {
+    switch(shape) { // switch statement to create the correct shape
         case 'Square':
             logo = new Square(text, textColor, shapeColor);
             break;
@@ -21,10 +21,10 @@ async () => { // this is an async function, inquirer.prompt() returns a promise,
             break;
     }
 
-    const svgContent = logo.generateSVG();
+    const svgContent = logo.generateSVG();  // generate the SVG content
 
-    fs.writeFile(`./assets/images/${answers.fileName}`, svgContent, (err) => {
-        if (err) throw err;
-        console.log('SVG logo has been saved!');
+    fs.writeFile(`./assets/images/${answers.fileName}`, svgContent, (err) => { // write the SVG content to a file
+        if (err) throw err; // if there is an error, throw it
+        console.log('SVG logo has been saved!'); // otherwise, log that the file has been saved
     });
 };
