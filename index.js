@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const { Square, Circle, Triangle } = require('./lib/shapes');  
-const questions = require('./lib/constants'); 
+const questions = require('./lib/promps'); 
 
 
 (async function() {
