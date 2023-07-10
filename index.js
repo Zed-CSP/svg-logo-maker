@@ -1,14 +1,14 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const { Square, Circle, Triangle } = require('./lib/shapes');  
-const questions = require('./lib/promps'); 
+const inquirer = require('inquirer'); // import inquirer npm package
+const fs = require('fs'); // import fs npm package
+const { Square, Circle, Triangle } = require('./lib/shapes');  // import classes
+const questions = require('./lib/promps');  // import questions
 
 
-async () => {
+async () => { // this is an async function, inquirer.prompt() returns a promise, and is aggressive
     const answers = await inquirer.prompt(questions);
     const { shape, text, textColor, shapeColor, fileName } = answers;
 
-    let logo;
+    let logo; 
     switch(shape) {
         case 'Square':
             logo = new Square(text, textColor, shapeColor);
