@@ -4,7 +4,7 @@ const { Square, Circle, Triangle } = require('./lib/shapes');
 const questions = require('./lib/promps'); 
 
 
-(async function() {
+async () => {
     const answers = await inquirer.prompt(questions);
     const { shape, text, textColor, shapeColor, fileName } = answers;
 
@@ -27,4 +27,4 @@ const questions = require('./lib/promps');
         if (err) throw err;
         console.log('SVG logo has been saved!');
     });
-})();
+};
