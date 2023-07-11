@@ -4,7 +4,7 @@ const { Square, Circle, Triangle } = require('./lib/shapes');  // import classes
 const questions = require('./lib/promps');  // import questions
 
 
-async () => { // this is an async function, inquirer.prompt() returns a promise, and is aggressive
+(async () => { // this is an async function, inquirer.prompt() returns a promise, and is aggressive
     const answers = await inquirer.prompt(questions);
     const { shape, text, textColor, shapeColor, fileName } = answers;
 
@@ -27,4 +27,10 @@ async () => { // this is an async function, inquirer.prompt() returns a promise,
         if (err) throw err; // if there is an error, throw it
         console.log('SVG logo has been saved!'); // otherwise, log that the file has been saved
     });
-};
+})(); // calls the async function immediately after defining it, this is called an IIFE (Immediately Invoked Function Expression)
+// This was done to avoid having to use a callback function with inquirer.prompt()
+// This is the same as:
+// (async function() {})();
+// or
+// async function main() {}
+// main();
